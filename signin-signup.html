@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta name="google-signin-client_id"
+        content="556958501860-8l7ln9s53ndrdaoki6c1j2jnublig98m.apps.googleusercontent.com">
+    <title>User Sign In/Registration</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0&appId=292864078577456&autoLogAppEvents=1"
+        nonce="v98dn73h"></script>
+
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='signup-signin.css' rel='stylesheet' type="text/css">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+    <script type='text/javascript' src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>
+    <script type='text/javascript'></script>
+</head>
+
+<body oncontextmenu='return false' class='snippet-body'>
+    <div class="row">
+        <div class="col-md-6 mx-auto p-0">
+            <div class="floating-box" id="modalBox">
+                   
+            </div>
+            <div class="card">
+
+                <div class="login-box">
+
+                    <div class="login-snip">
+                        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1"
+                            class="tab c-ptr">Login</label> <input onfocus="this.value=''" id="tab-2" type="radio" name="tab"
+                            class="sign-up"><label for="tab-2" class="tab c-ptr">Sign Up</label>
+                        <div class="login-space">
+                            <form class="login" method="POST" action="signin.php">
+                                <div class="group"> <label for="email" class="label mt-3">Enter Your E-mail</label>
+                                    <input id="user" onfocus="this.value=''" name="email" type="text" class="input"
+                                        placeholder="Enter your Email" required> </div>
+                                <div class="group"> <label for="pass" class="label">Password</label> <input
+                                        id="password" onfocus="this.value=''" type="password" name="password" class="input" data-type="password"
+                                        placeholder="Enter your password" required> </div>
+                                <div class="group mt-5 mb-5"> <input type="submit" class="button c-ptr" name="submit">
+                                </div>
+                                <div class="d-flex align-items-center justify-content-around">
+                                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                                    <div id="fb-root"></div>
+                                    <div class="fb-login-button" data-size="large" data-button-type="login_with"
+                                        data-layout="default" data-auto-logout-link="true" data-use-continue-as="true"
+                                        data-width="" scope="public_profile,email" onlogin="checkLoginState();"></div>
+
+                                    <!-- <div id="status"></div> -->
+                                </div>
+
+                            </form>
+                            <form class="sign-up-form" method="POST" action="signup.php">
+                                <div class="group"> <label for="contact-number" class="label mt-3">Enter Mobile
+                                        Number</label>
+                                    <input  onfocus="this.value=''" id="mobilenumber" name="mobilenumber" type="number" class="input"
+                                        placeholder="Enter your Mobile number" required>
+                                </div>
+                                <div class="group"> <label for="pass" class="label">Email Address</label> <input
+                                        id="email" onfocus="this.value=''" name="email" type="email" class="input"
+                                        placeholder="Enter your email address" required>
+                                </div>
+                                <div class="group"> <label for="pass" class="label">Password</label> <input id="pass"
+                                        type="password" onfocus="this.value=''" name="password" class="input" data-type="password"
+                                        placeholder="Create your password" required> </div>
+
+                                <div class="group"> <input type="submit" name="submit" class="button c-ptr mt-2">
+                                </div>
+                                <div class="d-flex align-items-center justify-content-around">
+                                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                                    <div id="fb-root"></div>
+                                    <div class="fb-login-button" data-size="large" data-button-type="login_with"
+                                        data-layout="default" data-auto-logout-link="true" data-use-continue-as="true"
+                                        data-width="" scope="public_profile,email" onlogin="checkLoginState();"></div>
+
+                                    <!-- <div id="status"></div> -->
+                                </div>
+                                <div class="foot"> <label for="tab-1" class="c-ptr mt-2">Already Member?</label> </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        function onSignIn(googleUser) {
+            // Useful data for your client-side scripts:
+            var profile = googleUser.getBasicProfile();
+            // console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+            // console.log('Full Name: ' + profile.getName());
+            // console.log('Given Name: ' + profile.getGivenName());
+            // console.log('Family Name: ' + profile.getFamilyName());
+            // console.log("Image URL: " + profile.getImageUrl());
+            // console.log("Email: " + profile.getEmail());
+
+            const id = profile.getId();
+            const name = profile.getName();
+            const email = profile.getEmail();
+
+
+            // The ID token you need to pass to your backend:
+            // var id_token = googleUser.getAuthResponse().id_token;
+            // console.log("ID Token: " + id_token);
+
+
+            var userdata = {
+                'id': id,
+                'name': name,
+                'email': email
+            };
+
+            $.ajax({
+                type: 'post',
+                url: 'googleregister.php',
+                contentType: 'application/x-www-form-urlencoded',
+                data: userdata,
+                success: function (data) {
+                    console.log(data);
+                    openModal(data)
+                }
+            });
+
+
+        }
+
+    </script>
+    <script>
+        function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+            console.log('statusChangeCallback');
+            console.log(response);                   // The current login status of the person.
+            if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+                testAPI();
+
+            } else {                                 // Not logged into your webpage or we are unable to tell.
+                document.getElementById('status').innerHTML = 'Please log ' +
+                    'into this webpage.';
+            }
+        }
+
+
+        function checkLoginState() {               // Called when a person is finished with the Login Button.
+            FB.getLoginStatus(function (response) {   // See the onlogin handler
+                statusChangeCallback(response);
+            });
+        }
+
+
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '292864078577456',
+                cookie: true,                     // Enable cookies to allow the server to access the session.
+                xfbml: true,                     // Parse social plugins on this webpage.
+                version: 'v8.0'           // Use this Graph API version for this call.
+            });
+
+
+            FB.getLoginStatus(function (response) {   // Called after the JS SDK has been initialized.
+                statusChangeCallback(response);        // Returns the login status.
+            });
+        };
+
+        function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+            console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me', function (response) {
+                console.log('Successful login for: ' + response.name);
+                console.log('Successful login for: ' + response.id);
+
+
+                var id = response.id;
+
+                var name = response.name;
+                var userdata = {
+                    'id': id,
+                    'name': name,
+
+                };
+                $.ajax({
+                    type: 'post',
+                    url: 'fbregister.php',
+                    contentType: 'application/x-www-form-urlencoded',
+                    data: userdata,
+                    success: function (data) {
+                        console.log(data);
+                        openModal(data)
+                    }
+                });
+            });
+
+
+        }
+      
+    </script>
+
+
+    <!-- The JS SDK Login Button -->
+    <script>
+        function openModal(data) {
+            const x = document.getElementById("modalBox");
+            x.style.display = "block";
+            x.innerHTML = data + '<br> <hr>Click here to go to locations Page<br><br>';
+            var anchor = document.createElement('a');
+            anchor.style.background = "grey";
+            anchor.style.padding = '5px';
+            anchor.textContent = "Location Seach Page";
+            anchor.href = "index.html";
+            x.appendChild(anchor);
+
+            // setTimeout(function () { x.style.display = 'none' }, 1500);
+        }
+    </script>
+
+
+</body>
+
+</html>
