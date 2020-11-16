@@ -1,0 +1,67 @@
+body {
+  font: normal 14px Verdana;
+  padding: 0;
+  margin: 0;
+}
+
+.container-fluid {
+  height: 100vh;
+}
+
+.container-fluid .row {
+  height: 100vh;
+}
+
+.container-fluid #map_canvas {
+  width: 100%;
+  height: 85%;
+}
+
+.container-fluid .side-content {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  height: 90%;
+  overflow-x: hidden;
+}
+
+.container-fluid .side-content .location-name {
+  cursor: pointer;
+}
+
+.container-fluid .side-content .location-name:hover {
+  color: blue;
+}
+
+.container-fluid .form-details {
+  display: none;
+  background: white;
+  padding: 50px;
+  border-radius: 10px;
+}
+
+.container-fluid .form-details .form-group {
+  /* Firefox */
+}
+
+.container-fluid .form-details .form-group input::-webkit-outer-spin-button,
+.container-fluid .form-details .form-group input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.container-fluid .form-details .form-group input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.relative {
+  position: relative;
+}
+/*# sourceMappingURL=style.css.map */
